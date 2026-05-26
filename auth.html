@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Signing in to Saxbys...</title>
+<style>
+  body{font-family:'Nunito Sans',Arial,sans-serif;background:#72CDF4;
+    display:flex;align-items:center;justify-content:center;
+    min-height:100vh;margin:0;flex-direction:column;gap:16px}
+  .card{background:#fff;border-radius:12px;padding:32px 40px;text-align:center;
+    box-shadow:0 8px 32px rgba(0,0,0,.15);max-width:360px}
+  h2{font-family:'Bebas Neue',Arial,sans-serif;font-size:28px;
+    letter-spacing:.06em;color:#72CDF4;margin-bottom:8px}
+  p{color:#666;font-size:14px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>SAXBYS</h2>
+  <p id="msg">✅ Sign-in successful!<br>This window will close automatically.</p>
+</div>
+<script>
+  // This page receives the OAuth redirect with the id_token in the hash.
+  // The opener (main app) reads the hash and closes this window.
+  setTimeout(function(){
+    if(window.opener){
+      // Signal the opener that we're done (it reads location.hash)
+      try{window.close();}catch(e){}
+    }
+  },3000);
+</script>
+</body>
+</html>
